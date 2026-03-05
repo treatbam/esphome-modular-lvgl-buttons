@@ -63,12 +63,6 @@ packages:
       weather_summary: sensor.home_hourly_summary
 ```
 
-### weather_icons_update.yaml
-
-~~Helper file for updating weather condition icons. Called internally by the other weather components.~~
-
-> **Removed.** Both components now use the ESPHome `mapping` component directly for condition-to-icon lookups, eliminating the need for this helper file.
-
 ## LVGL Widget IDs
 
 These widget IDs are created and can be referenced in your layouts:
