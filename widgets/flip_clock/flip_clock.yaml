@@ -1,0 +1,120 @@
+---
+# Flip Clock Widget - Gluqlo Style
+#
+# vars:
+#    uid:
+#    page_id:
+#    row:
+#    column:
+#    row_span:
+#    column_span:
+#    click_page:
+#    font_size:
+
+font:
+  - file: "esphome-modular-lvgl-buttons/widgets/flip_clock/fonts/gluqlo.ttf"
+    id: gluqlo_font
+    size: ${font_size | default(80)}
+    bpp: 8
+    glyphs: "0123456789"
+
+lvgl:
+  style_definitions:
+    - id: flip_panel_style
+      bg_color: 0x111111
+      bg_opa: cover
+      radius: 6
+      border_width: 0
+      pad_left: 8
+      pad_right: 8
+      pad_top: 12
+      pad_bottom: 12
+      scrollbar_mode: "OFF"
+
+    - id: flip_digit_style
+      text_font: gluqlo_font
+      text_color: gray400
+      align: center
+
+  pages:
+    - id: !extend ${page_id | default("main_page")}
+      widgets:
+        - obj:
+            id: ${uid}
+            # outline_width: 1
+            # outline_color: red
+            grid_cell_row_pos: ${row}
+            grid_cell_column_pos: ${column}
+            grid_cell_row_span: ${row_span | default(1)}
+            grid_cell_column_span: ${column_span | default(1)}
+            grid_cell_x_align: stretch
+            grid_cell_y_align: stretch
+            bg_color: black
+            bg_opa: cover
+            scrollbar_mode: "OFF"
+            pad_all: 0
+            on_short_click:
+              then:
+                lvgl.page.show: ${click_page | default(main_page)}
+            widgets:
+              # Flex container for the two panels
+              - obj:
+                  width: 100%
+                  height: 100%
+                  align: CENTER
+                  bg_opa: TRANSP
+                  pad_all: 2
+                  scrollbar_mode: "OFF"
+                  scrollable: false
+                  layout:
+                    type: FLEX
+                    flex_flow: ROW
+                    flex_align_main: CENTER
+                    flex_align_cross: CENTER
+                    flex_align_track: CENTER
+                  widgets:
+                    # ── Hour Panel ──
+                    - obj:
+                        styles: flip_panel_style
+                        flex_grow: 1
+                        height: SIZE_CONTENT
+                        scrollable: false
+                        widgets:
+                          - label:
+                              id: flip_hour_label
+                              styles: flip_digit_style
+                              align: CENTER
+                              text: "12"
+
+                    # ── Minute Panel ──
+                    - obj:
+                        styles: flip_panel_style
+                        flex_grow: 1
+                        height: SIZE_CONTENT
+                        scrollable: false
+                        widgets:
+                          - label:
+                              id: flip_min_label
+                              styles: flip_digit_style
+                              align: CENTER
+                              text: "00"
+
+              # Divider line - overlays across center of both panels
+              - obj:
+                  height: 2
+                  width: 100%
+                  align: CENTER
+                  bg_color: black
+                  bg_opa: cover
+                  pad_all: 0
+                  scrollable: false
+
+script:
+  - id: !extend time_update
+    then:
+      - lvgl.label.update:
+          id: flip_hour_label
+          text: !lambda 'return id(system_time).now().strftime("%l");'
+      - lvgl.label.update:
+          id: flip_min_label
+          text: !lambda 'return id(system_time).now().strftime("%M");'
