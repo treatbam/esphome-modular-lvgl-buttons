@@ -85,6 +85,8 @@ A modular library for building beautiful, touch-enabled control panels using ESP
 | `page_button.yaml` | Navigate between LVGL pages |
 | `time_button.yaml` | Display current time with page navigation |
 | `local_relay_button.yaml` | Control local GPIO relays |
+| `cover_button.yaml` | Control covers/blinds with position slider and 4-state visual feedback |
+| `sensor_button.yaml` | Display sensor values with icon, label, and live data |
 | `color_picker.yaml` | RGB color selection for lights |
 
 ### Pages (`pages/`)

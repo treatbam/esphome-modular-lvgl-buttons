@@ -1,5 +1,5 @@
 ---
-# Weather forcast from Home Assistant Accuweather plugin
+# Weather forecast from Home Assistant Accuweather plugin
 # Include this in your configuration.yaml
 #
 template:

@@ -155,8 +155,8 @@ lvgl:
             grid_cell_column_pos: 5
             grid_cell_row_span: 1
             grid_cell_column_span: 1
-            outline_width: 1   # debug code - This is for visualizing boundries remove for production
-            outline_color: red  # debug code - This is for visualizing boundries remove for production
+            outline_width: 1   # debug code - This is for visualizing boundaries remove for production
+            outline_color: red  # debug code - This is for visualizing boundaries remove for production
             widgets:
               - label:
                   text_font: $text_font

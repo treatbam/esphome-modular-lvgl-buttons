@@ -66,7 +66,7 @@ packages:
   # Include if your touch screen has a backlight. Also sets the time from HA
   backlight: !include esphome-modular-lvgl-buttons/common/backlight_time.yaml
 
-  # Harware description file
+  # Hardware description file
   hardware: !include esphome-modular-lvgl-buttons/hardware/sunton-esp32-8048s070.yaml
 
   # Basic boot screen with ESPHome logo and device diagnostic info
@@ -146,8 +146,8 @@ lvgl:
             grid_cell_column_pos: 6
             grid_cell_row_span: 1
             grid_cell_column_span: 1
-            outline_width: 1   # debug code - This is for visualizing boundries remove for production
-            outline_color: red  # debug code - This is for visualizing boundries remove for production
+            outline_width: 1   # debug code - This is for visualizing boundaries remove for production
+            outline_color: red  # debug code - This is for visualizing boundaries remove for production
             widgets:
               - label:
                   text_font: $text_font

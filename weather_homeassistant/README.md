@@ -94,4 +94,4 @@ weather_homeassistant/
 
 ## Complete Example
 
-See the main project's [SDL-weather-forcast.yaml](../example_code_advanced/SDL-weather-forcast.yaml) for a complete working example that combines both weather components with a time display.
+See the main project's [SDL-weather-forecast.yaml](../example_code_advanced/SDL-weather-forecast.yaml) for a complete working example that combines both weather components with a time display.
